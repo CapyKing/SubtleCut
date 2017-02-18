@@ -1,0 +1,72 @@
+<!doctype html>
+<html ng-app="subtleCutApp" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Subtle Cut</title>
+    <link rel="stylesheet" href="./css/subtlecut.css">
+    <link rel="stylesheet" href="./css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-static-top" id="subtle-cut-nav">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"><img src="images/subtlecutlogo.png" id="subtle-cut-brand"></img></a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li><a href="/films">Films</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <h4>Enquiries</h4>
+      <div ng-controller="emailController">
+        <h5>Email</h5>
+        <div class="client-address">
+          <span><input type="text" class="subtle-cut-input" placeholder="Your email address" aria-describedby="client-email-address" ng-model="emailSender"></span>
+        </div>
+        <h5>Name</h5>
+        <div class="client-address">
+          <span><input type="text" class="subtle-cut-input" placeholder="Your name" aria-describedby="client-email-address" ng-model="emailSender"></span>
+        </div>
+        <h5>Message</h5>
+        <div class="client-message">
+          <span><textarea class="subtle-cut-input" placeholder="Message" rows="4" aria-describedby="client-message" ng-model="emailContent"></textarea></span>
+        </div>
+        <div class="row">
+          <div class="col-md-2">
+            <div class="button-group client-send-button">
+              <button class="subtle-cut-button" type="submit" ng-click="sendEmail()">Send</button>
+            </div>
+          </div>
+          <div class="col-md-10">
+            <div class="alert-text" ng-show="emailSendingAlert">
+              <h6>Sending...</h6>
+            </div>
+            <div class="alert-text" ng-show="emailSuccessAlert">
+              <h6>Message Sent!</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-resource.min.js"></script>
+    <script src="/scripts/app.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  </body>
+</html>

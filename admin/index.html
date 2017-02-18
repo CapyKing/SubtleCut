@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html ng-app="subtleCutAdminApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Subtle Cut Admin</title>
+    <link rel="stylesheet" href="/css/subtlecut.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container" ng-controller="filmController">
+      <div class="row">
+        <h1>Subtle Cut Admin Panel</h1>
+      </div>
+      <div class="row">
+        <h2>Films:</h2>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <h3>Add:</h3>
+          <form ng-submit="addFilm()">
+            <div class="input-group">
+              <input type="text" class="subtle-cut-input" placeholder="Film title" ng-model="filmTitle">
+            </div>
+            <div class="input-group">
+              <input type="text" class="subtle-cut-input" placeholder="Film URL" ng-model="filmURL">
+            </div>
+            <div class="button-group">
+              <button class="subtle-cut-button" type="submit">Add film</button>
+            </div>
+          </form>
+        </div>
+        <div class="col-md-4">
+          <h3>Edit: (not working)</h3>
+          <ul>
+            <li ng-repeat="film in films">
+              <form ng-submit="editFilm(film._id)";>
+                <input type="text" class="subtle-cut-input" value="{{ film.title }}" ng-model="filmTitle" ng-init="filmTitle='{{ film.title }}'">
+                <input type="text" class="subtle-cut-input" value="{{ film.url }}" ng-model="filmURL" ng-init="filmURL='{{ film.url }}'">
+                <button class="subtle-cut-button" type="submit">Save changes</button>
+              </form>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h3>Remove:</h3>
+          <ul>
+            <li ng-repeat="film in films">
+              <h4>{{ film.title }}</h4>
+              <h4>{{ film.url }}</h4>
+              <a href="#" ng-click="deleteFilm(film._id, $index)">Delete film</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <h1>Preview:</h1>
+      </div>
+      <div class="row">
+        <h1>Films</h1>
+      </div>
+      <div class="row" ng-repeat="film in films">
+        <div class="embed-responsive embed-responsive-16by9">
+          <iframe class="embed-responsive-item" id="ytplayer" type="text/html" ng-src="{{ film.url | trusted }}" frameborder="0"></iframe>
+        </div>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-resource.min.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
